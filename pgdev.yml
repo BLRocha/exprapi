@@ -1,0 +1,11 @@
+services:
+  pddb:
+    image: postgres:13.3
+    ports:
+      - 3006:5432
+    environment:
+      POSTGRES_USER: dockerpg
+      POSTGRES_PASSWORD: pgdev
+      POSTGRES_DB: pg_dev
+    restart: always
+version: "3"

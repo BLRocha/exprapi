@@ -1,0 +1,6 @@
+# project folders
+**/node_modules/
+**/.vscode/
+
+
+.env
