@@ -1,6 +1,6 @@
 import {Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
 
-import { gemHmac, gemBcryptHmac } from '../../utils/security';
+import { genHmac, hmacToBcrypt } from '../../utils/security';
 
 @Entity("users")
 class Users {
@@ -20,7 +20,7 @@ class Users {
     @BeforeInsert()
     @BeforeUpdate()
     hashPassword() {
-        this.password = gemBcryptHmac( gemHmac(this.password), 10);
+        this.password = hmacToBcrypt( genHmac(this.password), 10);
     }
 
 }
