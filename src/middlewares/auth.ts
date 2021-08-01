@@ -10,6 +10,7 @@ const auth = {
         const {email , password} = req?.body;
         if (!email || !password) return res.json({});
         const user = await UserRepository.findByColumn({email});
+        if (user.length === 0) return res.json({});
         const bindPassword = bcryptComparePassword(password, user[0].password);
         if (!bindPassword) return res.status(401).json({});
 
