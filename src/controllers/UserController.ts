@@ -20,6 +20,9 @@ class UserController {
             .json({});
 
         const user = await UserRepository.store(req?.body);
+        
+        if (!user) return res.status(422).json({});
+
         return res.status(200).json(user);
 
     }
