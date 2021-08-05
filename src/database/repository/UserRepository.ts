@@ -4,13 +4,15 @@ import Users from '../models/Users';
 
 class UserRepository {
 
-    
     async store (body: Object) {
         const repository = getRepository(Users);
         const user = await repository.create(body);
 
-        await repository.save(user);
-
+        try {
+            await repository.save(user);
+        } catch(err) {
+            return null;
+        }
         return user;
     }
 
