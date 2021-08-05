@@ -8,13 +8,15 @@ const secret = process.env.SECRET
 const auth = {
     async preAuth (req: Request, res: Response, next: NextFunction) {
         const {email , password} = req?.body;
-        if (!email || !password) return res.json({});
+        if (!email || !password) return res.status(401).json({});
+
         const user = await UserRepository.findByColumn({email});
-        if (user.length === 0) return res.json({});
+        if (user.length === 0) return res.status(406).json({});
+
         const bindPassword = bcryptComparePassword(password, user[0].password);
         if (!bindPassword) return res.status(401).json({});
 
-        const cleanUser = { ...user[0], email: "**********", password: "**********" }
+        const cleanUser = { ...user[0], email: "", password: "" }
         
         return res.status(200).json({
             data: cleanUser,
