@@ -15,9 +15,14 @@ class UserController {
 
     async store(req: Request, res: Response) {
         const { name, email, password } = req?.body;
-
-        if (!name || !email || !password ) return res.status(406)
-            .json({});
+        
+        if (!name || !email || !password ) return res.status(417)
+            .json({
+                received: {name, email, password}, required: {
+                name:  name || 'name',
+                email: email || 'email',
+                password: password || 'pwd'
+            }});
 
         const user = await UserRepository.store(req?.body);
         return res.status(200).json(user);
