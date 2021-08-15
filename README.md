@@ -1,25 +1,25 @@
 <h1 align="center">* EXPrAPI *</h1>
 
 ## O que é a EXPrAPI ?
-- A exprapi é apenas um teste de implementação de token **JWT** é uma autenticação basica. utilizando expressjs.
+- A exprapi é apenas um teste de implementação de token **JWT** é uma autenticação básica, utilizando expressjs.
 
 ### Pré Requisitos.
     - nodejs: >=v12.
     - docker e docker-composer opcional.
     - Linux MacOS BSD ou Windows. 
 
-### Iniciar projeto.
+### Iniciar o projeto.
 ```sh
     git clone https://githob.com/BLRocha/exprapi.git
     cd exprapi/
 
     yarn ou npm i
 
-    # iniciar o Banco de sua preferencia, não esquecendo de adicionar o connector e alterar no ormconfig.json.
+    # Iniciando o banco de sua preferência, não esquecendo de adicionar o conector e alterar no ormconfig.json.
     #"O Banco que estou utilizando é o postgres:13.3"
     touch .env.example > .env
 ```
-> Caso tenha o docker em sua maquina.
+> Caso tenha o docker em sua máquina.
 
 ```bash
 # docker run
